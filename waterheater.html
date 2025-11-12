@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Heater Solutions - Convert Power Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #FF9800;
+            --secondary: #2196F3;
+            --dark: #263238;
+            --light: #ECEFF1;
+            --accent: #FF5722;
+            --success: #25D366;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .heater-hero {
+            background: linear-gradient(135deg, #2196F3 0%, #0D47A1 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .heater-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .heater-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+            background-color: var(--light);
+        }
+        
+        /* Water Heater Types Section */
+        .heater-types {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .type-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .type-image {
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .type-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .type-content {
+            padding: 25px;
+        }
+        
+        .type-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .type-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .type-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .type-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .type-features li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        /* Brands Section */
+        .brands {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .brand-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+        
+        .brand-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .brand-logo {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .brand-logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        
+        .brand-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .brand-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* Heater Benefits Section */
+        .heater-benefits {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Installation Process */
+        .installation {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
+            color: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* WhatsApp Section */
+        .whatsapp-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .whatsapp-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .whatsapp-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: white;
+            color: #25D366;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-button i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Call and WhatsApp Icons */
+        .contact-icons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .call-icon {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .whatsapp-icon {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .whatsapp-number {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            background-color: var(--success);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* Back to Home Button */
+        .back-home {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .heater-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .heater-hero p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .heater-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .heater-hero p {
+                font-size: 1rem;
+            }
+            
+            .whatsapp-number {
+                top: -25px;
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .heater-hero {
+                padding: 120px 0 80px;
+            }
+            
+            .heater-types, .brands, .heater-benefits, .installation, .why-choose, .whatsapp-section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .heater-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-bolt logo-icon"></i>
+                <h1>Convert Power Systems</h1>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Water Heater Hero Section -->
+    <section class="heater-hero">
+        <div class="container">
+            <h1>Professional Water Heater Solutions</h1>
+            <p>Instant and storage water heaters from trusted brands for comfortable bathing experience</p>
+            <a href="#contact" class="cta-button">Get Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Water Heater Types Section -->
+    <section class="heater-types" id="types">
+        <div class="container">
+            <div class="section-title">
+                <h2>Water Heater Types We Provide</h2>
+                <p>Comprehensive water heating solutions for all your needs</p>
+            </div>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-image">
+                        <!-- Add instant water heater image here -->
+                        <img src="images/How Much Does a Tankless Water Heater Cost_.jpeg" alt="Instant Water Heater">
+                    </div>
+                    <div class="type-content">
+                        <h3>Instant Water Heaters</h3>
+                        <p>Compact and efficient water heaters that provide hot water instantly when needed</p>
+                        <ul class="type-features">
+                            <li><i class="fas fa-check"></i> Instant hot water on demand</li>
+                            <li><i class="fas fa-check"></i> Energy efficient operation</li>
+                            <li><i class="fas fa-check"></i> Compact size saves space</li>
+                            <li><i class="fas fa-check"></i> Easy installation</li>
+                            <li><i class="fas fa-check"></i> Ideal for small families</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-image">
+                        <!-- Add storage water heater image here -->
+                        <img src="images/web/Invest in Your Home with a Smart Water Heater - Within the Grove.jpeg" alt="Storage Water Heater">
+                    </div>
+                    <div class="type-content">
+                        <h3>Storage Water Heaters</h3>
+                        <p>Traditional water heaters with storage tanks for continuous hot water supply</p>
+                        <ul class="type-features">
+                            <li><i class="fas fa-check"></i> Continuous hot water supply</li>
+                            <li><i class="fas fa-check"></i> Suitable for larger families</li>
+                            <li><i class="fas fa-check"></i> Multiple capacity options</li>
+                            <li><i class="fas fa-check"></i> Cost-effective solution</li>
+                            <li><i class="fas fa-check"></i> Reliable performance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-image">
+                        <!-- Add solar water heater image here -->
+                        <img src="images/Heater Systems.jpeg" alt="Solar Water Heater">
+                    </div>
+                    <div class="type-content">
+                        <h3>Solar Water Heaters</h3>
+                        <p>Eco-friendly water heating systems that use solar energy to heat water</p>
+                        <ul class="type-features">
+                            <li><i class="fas fa-check"></i> Zero electricity consumption</li>
+                            <li><i class="fas fa-check"></i> Environmentally friendly</li>
+                            <li><i class="fas fa-check"></i> Long-term cost savings</li>
+                            <li><i class="fas fa-check"></i> Government subsidies available</li>
+                            <li><i class="fas fa-check"></i> Works even on cloudy days</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands" id="brands">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Water Heater Partners</h2>
+                <p>We work with trusted water heater brands for reliable performance</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <!-- Add V-Guard water heater image here -->
+                        <img src="images/logo/vgaurd.png" alt="V-Guard Water Heaters">
+                    </div>
+                    <h3>V-Guard Water Heaters</h3>
+                    <p>Premium quality water heaters with advanced safety features and energy efficiency</p>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <!-- Add Hikon water heater image here -->
+                        <img src="images/logo/hykon.png" alt="Hikon Water Heaters">
+                    </div>
+                    <h3>Hykon Water Heaters</h3>
+                    <p>Innovative water heating technology with excellent durability and performance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Water Heater Benefits Section -->
+    <section class="heater-benefits" id="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Benefits of Modern Water Heaters</h2>
+                <p>Experience comfort and efficiency with advanced water heating solutions</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Energy Efficient</h3>
+                    <p>Modern water heaters consume less electricity while providing optimal performance</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Advanced Safety</h3>
+                    <p>Multiple safety features including thermal cut-off and pressure release valves</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Instant Hot Water</h3>
+                    <p>Get hot water instantly without waiting for the tank to heat up</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Cost Effective</h3>
+                    <p>Save on electricity bills with energy-efficient water heating solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Process -->
+    <section class="installation" id="installation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Installation Process</h2>
+                <p>Professional water heater installation service from start to finish</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Site Assessment</h3>
+                    <p>We evaluate your bathroom space, electrical connections, and hot water requirements</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Product Selection</h3>
+                    <p>Help you choose the right water heater based on your needs and budget</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Professional Installation</h3>
+                    <p>Our certified technicians install with precision and safety standards</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Safety Checks</h3>
+                    <p>Complete testing of electrical connections, water flow, and safety features</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>User Training</h3>
+                    <p>Demonstration of operation, maintenance tips, and warranty details</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose" id="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Water Heater Services?</h2>
+                <p>We provide complete peace of mind with our professional services</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Certified Technicians</h3>
+                    <p>Our team consists of certified professionals with years of water heater installation experience</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Genuine Products</h3>
+                    <p>We use only genuine V-Guard and Hikon products from authorized dealers</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>After-Sales Support</h3>
+                    <p>24/7 support and maintenance services for complete peace of mind</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Warranty Protection</h3>
+                    <p>Comprehensive warranty on products and installation workmanship</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Section -->
+    <section class="whatsapp-section" id="contact">
+        <div class="container">
+            <div class="whatsapp-content">
+                <h2>Get Hot Water Comfort Today!</h2>
+                <p>Contact us for a free consultation and site survey. Our experts will help you choose the perfect water heater for your needs.</p>
+                <a href="https://wa.me/919744706495?text=Hi%20Convert%20Power%20Systems!%20I'm%20interested%20in%20water%20heater%20installation." class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Get Free Consultation on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home -->
+    <section class="back-home">
+        <div class="container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Convert Power Systems</h3>
+                    <p>Leading provider of water heater solutions and home comfort systems for residential and commercial applications.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="solar.html">Solar Panel Systems</a></li>
+                        <li><a href="inverter.html">Inverter Installations</a></li>
+                        <li><a href="battery.html">Battery Solutions</a></li>
+                        <li><a href="cctv.html">CCTV Installation</a></li>
+                        <li><a href="heater.html">Water Heater Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> NEDUMPARAMPIL BUILDING, KOOTHRAPPALLLY</li>
+                        <li><i class="fas fa-phone"></i> +91 97447 06495, +91 85902 20872</li>
+                        <li><i class="fas fa-envelope"></i> info@convertpowersystems.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Convert Power Systems. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Call and WhatsApp Icons -->
+    <div class="contact-icons">
+        <a href="tel:+919744706495" class="contact-icon call-icon">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/919744706495?text=Hi%20Convert%20Power%20Systems!%20I'm%20interested%20in%20water%20heater%20installation." class="contact-icon whatsapp-icon" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <div class="whatsapp-number">+91 97447 06495</div>
+        </a>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Power Systems - Solar & Inverter Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #FF9800;
+            --secondary: #2196F3;
+            --dark: #263238;
+            --light: #ECEFF1;
+            --accent: #FF5722;
+            --success: #25D366;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section with Image Transitions */
+        .hero {
+            position: relative;
+            height: 100vh;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+        
+        .hero-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+            background-color: var(--accent);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .service-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* About Section with Products */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Products Section inside About */
+        .products {
+            padding: 60px 0 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Floating Battery Images Section */
+        .floating-batteries {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .floating-container {
+            position: relative;
+            height: 500px;
+        }
+        
+        .floating-item {
+            position: absolute;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 20s infinite ease-in-out;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .floating-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .floating-item:nth-child(1) {
+            width: 180px;
+            height: 120px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-item:nth-child(2) {
+            width: 160px;
+            height: 100px;
+            top: 60%;
+            left: 10%;
+            animation-delay: -5s;
+        }
+        
+        .floating-item:nth-child(3) {
+            width: 140px;
+            height: 90px;
+            top: 30%;
+            right: 15%;
+            animation-delay: -10s;
+        }
+        
+        .floating-item:nth-child(4) {
+            width: 170px;
+            height: 110px;
+            top: 70%;
+            right: 5%;
+            animation-delay: -15s;
+        }
+        
+        .floating-item:nth-child(5) {
+            width: 150px;
+            height: 100px;
+            top: 20%;
+            left: 40%;
+            animation-delay: -2s;
+        }
+        
+        .floating-item:nth-child(6) {
+            width: 190px;
+            height: 130px;
+            top: 50%;
+            left: 50%;
+            animation-delay: -7s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+            50% {
+                transform: translateY(10px) rotate(-1deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(1deg);
+            }
+        }
+        
+        /* WhatsApp Section */
+        .whatsapp-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .whatsapp-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .whatsapp-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: white;
+            color: #25D366;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-button i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Call and WhatsApp Icons */
+        .contact-icons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .call-icon {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .whatsapp-icon {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .whatsapp-number {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            background-color: var(--success);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .floating-container {
+                height: 400px;
+            }
+            
+            .floating-item {
+                width: 140px !important;
+                height: 90px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .floating-container {
+                height: 300px;
+            }
+            
+            .floating-item {
+                width: 110px !important;
+                height: 70px !important;
+            }
+            
+            .whatsapp-number {
+                top: -25px;
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 80vh;
+            }
+            
+            .services, .floating-batteries, .about, .whatsapp-section, .contact {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .floating-container {
+                height: 250px;
+            }
+            
+            .floating-item {
+                width: 90px !important;
+                height: 60px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-bolt logo-icon"></i>
+                <h1>Convert Power Systems</h1>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Image Transitions -->
+    <section class="hero" id="home">
+        <div class="hero-slides">
+            <div class="hero-slide active" style="background-image: url('images/Solar\ Energy\ Projects_\ Empower\ Your\ Off-Grid\ Life\ with\ Modern\ Dark\ Solar\ Panels.jpeg')">
+                <div class="hero-content">
+                    <h2>Power Your Life with Solar Energy</h2>
+                    <p>ON GRID & OFF GRID SOLAR PLANT, UPS, INVERTER, BATTERY & CCTV Solutions</p>
+                    <a href="#contact" class="cta-button">Get Free Consultation</a>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('images/Energy\ as\ a\ Service\ \(EaaS\).jpeg')">
+                <div class="hero-content">
+                    <h2>Professional Solar Installations</h2>
+                    <p>Expert installation of solar panels, inverters, and battery systems for maximum efficiency and savings.</p>
+                    <a href="#services" class="cta-button">Our Services</a>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('images/https___posts_gle_KfyZXb\ \(1\).jpeg')">
+                <div class="hero-content">
+                    <h2>Advanced Energy Storage Solutions</h2>
+                    <p>Store excess solar energy with our premium battery systems for uninterrupted power day and night.</p>
+                    <a href="#about" class="cta-button">Our Products</a>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('images/Chiuda\ su\ della\ macchina\ fotografica\ maschio\ di\ Fixing\ CCTV\ del\ tecnico\ sulla\ parete\ _\ Foto\ Premium.jpeg')">
+                <div class="hero-content">
+                    <h2>Complete Security Systems</h2>
+                    <p>Protect your property with our advanced CCTV and security solutions integrated with solar power.</p>
+                    <a href="#services" class="cta-button">Explore Security</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive energy solutions for residential and commercial needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/web/Solar Panel Installation on Tiled Roof _ Renewable Energy Solutions.jpeg" alt="Solar Inverter">
+                    </div>
+                    <div class="service-content">
+                        <h3>Solar Plants</h3>
+                        <p>Grid-tied solar power systems that reduce your electricity bills and provide clean energy.</p>
+                        <a href="solar.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/web/Ariston Andris Lux is a electric storage water….jpeg" alt="CCTV Systems">
+                    </div>
+                    <div class="service-content">
+                        <h3>Water Heater</h3>
+                        <p>Cut your energy bills and achieve independence. Our efficient solar thermal systems provide endless hot water, powered directly by the sun.</p>
+                        <a href="waterheater.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/web/Inverter dealers in Madurai sell central inverters….jpeg" alt="Solar Batteries">
+                    </div>
+                    <div class="service-content">
+                        <h3>UPS Systems</h3>
+                        <p>Uninterruptible power supply installations for critical applications and backup power.</p>
+                        <a href="invter.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/web/Wall Mounted LifePO4 Battery Projects - Solar Battery Manufacturer.jpeg" alt="Solar Plants">
+                    </div>
+                    <div class="service-content">
+                        <h3>Inverter Installations</h3>
+                        <p>Professional installation of high-quality inverters for efficient power conversion.</p>
+                        <a href="invter.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/web/1kW Solar system price in India_ Buy 1kW On-grid….jpeg" alt="Solar Heaters">
+                    </div>
+                    <div class="service-content">
+                        <h3>Battery Solutions</h3>
+                        <p>Comprehensive battery storage solutions for backup power and energy independence.</p>
+                        <a href="batery.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/Serviços de instalação de cameras,alarmes,porteiro eletronico,automação em geral.jpeg" alt="Maintenance">
+                    </div>
+                    <div class="service-content">
+                        <h3>CCTV Installation</h3>
+                        <p>Advanced CCTV surveillance systems for complete property security and monitoring.</p>
+                        <a href="cctv.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Battery Images Section -->
+    <section class="floating-batteries">
+        <div class="container floating-container">
+            <div class="floating-item">
+                <img src="images/logo/a98e31a18a3ba37c5c2125eaa6781395.jpg" alt="Lithium Battery">
+            </div>
+            <div class="floating-item">
+                <img src="images/logo/b713a2d3fc29ee83279cd074ad23093f.jpg" alt="Solar Battery">
+            </div>
+            <div class="floating-item">
+                <img src="images/logo/CP PLUS.png" alt="Power Battery">
+            </div>
+            <div class="floating-item">
+                <img src="images/logo/images.png" alt="Energy Storage">
+            </div>
+            <div class="floating-item">
+                <img src="images/logo/MICROTEK.png" alt="Backup Battery">
+            </div>
+            <div class="floating-item">
+                <img src="images/logo/vgaurd.png" alt="Home Battery">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Products -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Learn more about Convert Power Systems and our products</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Your Trusted Energy Partner</h2>
+                    <p>Convert Power Systems is a leading provider of solar energy solutions, specializing in ON Grid & OFF Grid solar plants, UPS systems, inverters, batteries, and CCTV installations.</p>
+                    <p>With years of experience in the industry, we are committed to providing high-quality products and professional services to both residential and commercial clients.</p>
+                    <p>Our team of certified technicians ensures that every installation meets the highest standards of quality and safety.</p>
+                    <p>We believe in sustainable energy solutions that not only save you money but also contribute to a cleaner environment.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/web/Classy Solar Installation.jpeg" alt="About Convert Power Systems">
+                </div>
+            </div>
+            
+            <!-- Products Section inside About -->
+            <div class="products">
+                <div class="section-title">
+                    <h2>Our Products</h2>
+                    <p>High-quality energy and security products for residential and commercial needs</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <h3>Solar Panels</h3>
+                        <p>High-efficiency solar panels for maximum energy generation</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Inverters</h3>
+                        <p>Advanced inverters for efficient power conversion</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-car-battery"></i>
+                        </div>
+                        <h3>Batteries</h3>
+                        <p>Reliable energy storage solutions for backup power</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>CCTV Systems</h3>
+                        <p>Advanced surveillance for complete property security</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3>UPS Systems</h3>
+                        <p>Uninterruptible power supply for critical applications</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Accessories</h3>
+                        <p>All necessary components for complete installations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Section -->
+    <section class="whatsapp-section">
+        <div class="container">
+            <div class="whatsapp-content">
+                <h2>Get Instant Support on WhatsApp</h2>
+                <p>Have questions about our services? Need a quote? Our experts are just a message away. Click below to start a conversation with us on WhatsApp.</p>
+                <a href="https://wa.me/919744706495?text=Hi%20Convert%20Power%20Systems!%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services." class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat with Us on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our experts for a free consultation</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Talk About Your Energy Needs</h3>
+                    <p>Our team of experts is ready to help you transition to clean, renewable energy solutions. Contact us today for a free consultation and quote.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>NEDUMPARAMPIL BUILDING, KOOTHRAPPALLLY</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone Numbers</h4>
+                                <p>+91 97447 06495, +91 85902 20872</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@convertpowersystems.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3>Business Hours</h3>
+                    <p>We're available to serve you during the following hours:</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Monday - Friday</h4>
+                                <p>9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Saturday</h4>
+                                <p>10:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Sunday</h4>
+                                <p>Emergency Services Only</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Convert Power Systems</h3>
+                    <p>Leading provider of ON GRID & OFF GRID SOLAR PLANT, UPS, INVERTER, BATTERY & CCTV solutions for residential and commercial applications.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="solar.html">ON Grid Solar Plants</a></li>
+                        <li><a href="solar.html">OFF Grid Solar Plants</a></li>
+                        <li><a href="invter.html">UPS Systems</a></li>
+                        <li><a href="invter.html">Inverter Installations</a></li>
+                        <li><a href="batery.html">Battery Solutions</a></li>
+                        <li><a href="cctv.html">CCTV Installation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> NEDUMPARAMPIL BUILDING, KOOTHRAPPALLLY</li>
+                        <li><i class="fas fa-phone"></i> +91 97447 06495, +91 85902 20872</li>
+                        <li><i class="fas fa-envelope"></i> info@convertpowersystems.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Convert Power Systems. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Call and WhatsApp Icons -->
+    <div class="contact-icons">
+        <a href="tel:+919744706495" class="contact-icon call-icon">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/919744706495?text=Hi%20Convert%20Power%20Systems!%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services." class="contact-icon whatsapp-icon" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <div class="whatsapp-number">+91 97447 06495</div>
+        </a>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Hero Image Slider
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            // Hide all slides
+            heroSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show the current slide
+            heroSlides[index].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Start the slideshow
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
